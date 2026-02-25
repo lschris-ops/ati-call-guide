@@ -422,6 +422,10 @@ const scenarios = [
         trigger: '"Can you give me at least an ETA?"',
         response: 'I completely understand how frustrating it can be. We\'re not able to monitor the pro\'s route, but your service is confirmed and hasn\'t been rescheduled or cancelled. The best way to get a direct update is to message your pro through the Inbox in our app or website — your message goes straight to them.',
       },
+      {
+        trigger: '"Why can\'t you just give me a time?"',
+        response: 'I completely understand. Our pros are assigned to multiple properties in a day, and each property may have different services — so the time it takes at each stop can vary depending on the lot size or the type of service. They also plan their routes to save time, gas, and effort, which means the order can shift. Because of that, it\'s really difficult for us to give a specific time. What I can assure you is that your service is confirmed and your pro has until sundown to complete it.',
+      },
     ],
   },
   {
@@ -553,6 +557,10 @@ const scenarios = [
       {
         trigger: '"That\'s not acceptable — I need to plan my day"',
         response: 'I completely understand, and I\'m sorry we can\'t give you a more specific time. Here\'s what I\'d suggest: you actually don\'t need to be home for the service at all. Just make sure your gates are unlocked and your pets are indoors — that way you can go about your day and the pro can start as soon as they arrive. If you\'d like to follow up with your pro directly, please use the Inbox in our app or website.',
+      },
+      {
+        trigger: '"Why can\'t you just give a time — it\'s not that hard"',
+        response: 'I hear you, and I wish I could. Our pros handle multiple properties in a day, and each one can take a different amount of time depending on the lot size or the type of service. They also plan their own routes to save time and effort — so the schedule at each stop can shift. That\'s what makes it hard to pin down a specific time. Our pros work sun up to sun down, and the best way to reach your pro directly is through the Inbox in our app or website.',
       },
       {
         trigger: 'Customer still pushing after second explanation',
