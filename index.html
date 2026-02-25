@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATI Call Guide — Tier II Phone</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  color: #2d3748;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.header {
+  background: #276749;
+  color: white;
+  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.header h1 { font-size: 1rem; font-weight: 700; letter-spacing: 0.4px; }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.reset-btn-top {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.reset-btn-top:hover { background: rgba(255,255,255,0.25); }
+
+/* ── Rules bar ──────────────────────────────────────── */
+.rules-bar {
+  background: #e6fffa;
+  border-bottom: 2px solid #b2f5ea;
+  padding: 7px 20px;
+  font-size: 0.78rem;
+  color: #234e52;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.rules-bar strong { color: #276749; }
+.rules-divider { color: #b2f5ea; }
+
+/* ── Main content ───────────────────────────────────── */
+.main {
+  flex: 1;
+  max-width: 820px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 16px 8px;
+}
+
+/* ── Nav row ────────────────────────────────────────── */
+.nav-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.btn-nav {
+  background: white;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: #4a5568;
+  font-weight: 600;
+}
+.btn-nav:hover { background: #f7fafc; border-color: #a0aec0; }
+
+/* ── Cards ──────────────────────────────────────────── */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #276749;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Admini box ─────────────────────────────────────── */
+.admini-box {
+  background: #faf5ff;
+  border: 1px solid #d6bcfa;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: #44337a;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.admini-box strong { color: #553c9a; }
+.admini-box .not-for {
+  margin-top: 6px;
+  color: #c53030;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ── Decision buttons ───────────────────────────────── */
+.decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.btn-decision {
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-align: left;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.btn-decision:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+.btn-decision:active { transform: translateY(0); }
+.btn-cg { background: #276749; color: white; }
+.btn-br { background: #c53030; color: white; }
+.btn-decision .d-sub { font-size: 0.76rem; font-weight: 400; opacity: 0.88; margin-top: 4px; }
+
+/* ── Scenario grid ──────────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.btn-scenario {
+  padding: 12px 14px;
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.15s;
+  line-height: 1.4;
+  color: #2d3748;
+}
+.btn-scenario:hover { border-color: #276749; background: #f0fff4; }
+.btn-scenario.track-c {
+  border-color: #fc8181;
+  background: #fff5f5;
+  color: #742a2a;
+}
+.btn-scenario.track-c:hover { border-color: #c53030; background: #fee2e2; }
+.btn-scenario .s-sub {
+  font-size: 0.73rem;
+  font-weight: 400;
+  color: #718096;
+  margin-top: 3px;
+}
+.btn-scenario.track-c .s-sub { color: #c53030; }
+
+/* ── Script box ─────────────────────────────────────── */
+.script-box {
+  background: #ebf8ff;
+  border-left: 4px solid #3182ce;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #1a365d;
+}
+.script-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3182ce;
+  margin-bottom: 7px;
+}
+.script-text { font-style: italic; }
+.script-box.track-c {
+  background: #fff5f5;
+  border-left-color: #c53030;
+  color: #742a2a;
+}
+.script-box.track-c .script-label { color: #c53030; }
+
+/* ── Section label ──────────────────────────────────── */
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #718096;
+  margin: 14px 0 7px;
+}
+
+/* ── Checklist ──────────────────────────────────────── */
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 7px 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #f0f4f8;
+  line-height: 1.5;
+}
+.checklist-item:last-child { border-bottom: none; }
+.check-num {
+  background: #276749;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-num.warn { background: #c53030; }
+
+/* ── Rebuttals ──────────────────────────────────────── */
+.rebuttals-section { margin-top: 14px; }
+.rebuttal-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #744210;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.rebuttal-item {
+  border: 1px solid #fbd38d;
+  border-radius: 8px;
+  margin-bottom: 7px;
+  overflow: hidden;
+}
+.rebuttal-item.is-warning { border-color: #fc8181; }
+.rebuttal-trigger {
+  padding: 10px 14px;
+  background: #fffaf0;
+  cursor: pointer;
+  font-size: 0.83rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #744210;
+  user-select: none;
+}
+.rebuttal-item.is-warning .rebuttal-trigger {
+  background: #fff5f5;
+  color: #742a2a;
+}
+.rebuttal-trigger:hover { filter: brightness(0.97); }
+.rebuttal-arrow { transition: transform 0.2s; font-size: 0.65rem; }
+.rebuttal-item.open .rebuttal-arrow { transform: rotate(180deg); }
+.rebuttal-body {
+  display: none;
+  padding: 12px 14px;
+  background: #fffdf5;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #1a202c;
+  border-top: 1px solid #fbd38d;
+  font-style: italic;
+}
+.rebuttal-item.is-warning .rebuttal-body {
+  background: #fff5f5;
+  border-top-color: #fc8181;
+  color: #742a2a;
+  font-style: normal;
+  font-weight: 600;
+}
+.rebuttal-item.open .rebuttal-body { display: block; }
+
+/* ── Warning box ────────────────────────────────────── */
+.warning-box {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 8px;
+  padding: 11px 14px;
+  margin-top: 12px;
+}
+.warning-box .warning-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c53030;
+  margin-bottom: 6px;
+}
+.warning-item {
+  font-size: 0.8rem;
+  color: #742a2a;
+  padding: 3px 0;
+  display: flex;
+  gap: 6px;
+}
+.warning-item::before { content: "✗"; color: #e53e3e; font-weight: 700; flex-shrink: 0; }
+
+/* ── Track badge ────────────────────────────────────── */
+.track-badge {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid;
+}
+.track-badge.a { background: #f0fff4; color: #276749; border-color: #276749; }
+.track-badge.b { background: #ebf8ff; color: #2b6cb0; border-color: #2b6cb0; }
+.track-badge.c { background: #fff5f5; color: #c53030; border-color: #c53030; }
+
+/* ── Bottom warning bar ─────────────────────────────── */
+.bottom-warnings {
+  background: #fff5f5;
+  border-top: 2px solid #fc8181;
+  padding: 10px 20px;
+  font-size: 0.77rem;
+}
+.bw-title {
+  font-weight: 700;
+  color: #c53030;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.bw-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.bw-item {
+  background: white;
+  border: 1px solid #feb2b2;
+  border-radius: 4px;
+  padding: 3px 8px;
+  color: #742a2a;
+  font-size: 0.74rem;
+}
+.bw-item::before { content: "✗ "; color: #e53e3e; font-weight: 700; }
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 520px) {
+  .scenario-grid { grid-template-columns: 1fr; }
+  .decision-grid { grid-template-columns: 1fr; }
+  .rules-bar { gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌿 ATI Call Guide</h1>
+  <div class="header-right">
+    <span class="badge">Tier II Phone</span>
+    <button class="reset-btn-top" onclick="reset()">↺ Start Over</button>
+  </div>
+</div>
+
+<div class="rules-bar">
+  <span><strong>Service Window:</strong> No pro / Pending = 2-day &nbsp;·&nbsp; Pro assigned = 1-day</span>
+  <span class="rules-divider">|</span>
+  <span><strong>ADmini path:</strong> Call ticket → Apps → CX Info → Schedule Decision</span>
+  <span class="rules-divider">|</span>
+  <span><strong>Scope:</strong> Lawn Mowing only (not MQ/IQ, fixes, or disputes)</span>
+</div>
+
+<div class="main" id="app"></div>
+
+<div class="bottom-warnings">
+  <div class="bw-title">❌ Never say on any ATI call</div>
+  <div class="bw-items">
+    <span class="bw-item">"There's nothing I can do about the time"</span>
+    <span class="bw-item">"The pro has their own schedule"</span>
+    <span class="bw-item">"You can check the app" (as the only option)</span>
+    <span class="bw-item">Repeat the window policy twice without a next step</span>
+    <span class="bw-item">Offer to leave a note reminding pro to notify customer on arrival</span>
+    <span class="bw-item">Give or share the pro's phone number</span>
+  </div>
+</div>
+
+<script>
+// ── State ───────────────────────────────────────────────────────────────────
+let state = { step: 'admini', decision: null, scenario: null };
+
+function reset() {
+  state = { step: 'admini', decision: null, scenario: null };
+  render();
+}
+function goBack() {
+  if (state.step === 'script')   { state.step = 'scenario'; state.scenario = null; }
+  else if (state.step === 'br')  { state.step = 'admini';   state.decision = null; }
+  else if (state.step === 'scenario') { state.step = 'admini'; state.decision = null; }
+  render();
+}
+function selectDecision(d) {
+  state.decision = d;
+  state.step = d === 'br' ? 'br' : 'scenario';
+  render();
+}
+function selectScenario(id) {
+  state.scenario = id;
+  state.step = 'script';
+  render();
+}
+function toggleRebuttal(el) {
+  el.classList.toggle('open');
+}
+
+// ── Scenarios data ──────────────────────────────────────────────────────────
+const scenarios = [
+  {
+    id: 'eta',
+    label: '"When is my pro coming today?"',
+    sub: 'Same-day ETA inquiry',
+    track: 'A',
+    adminiNote: 'Customer Guidance — explain service window (1-day if pro assigned)',
+    script: 'Your service is scheduled for [date]. While I\'m unable to provide a specific or estimated arrival time for your pro, our pros work from sun up to sun down. I also recommend reaching out to your Pro through Inbox by logging into our app or website — that\'s the best way to get a response and stay up-to-date with your service.',
+    steps: [
+      { text: 'Acknowledge first — "I completely understand, you want to plan your day around this, that makes total sense."', warn: false },
+      { text: 'Give the service window (1-day if pro assigned, 2-day if no pro/pending)', warn: false },
+      { text: 'Offer Inbox in the app/website as the best real-time update channel', warn: false },
+      { text: 'Remind them they\'ll get an app notification when pro is en route', warn: false },
+    ],
+    rebuttals: [
+      {
+        trigger: '"I need an exact time"',
+        response: 'I wish I could give you one — I don\'t have real-time GPS access to the pro\'s location. The window is [X] and you\'ll get an app notification when they\'re en route. If they haven\'t arrived by [end of window], please call us back and we\'ll follow up directly with the pro.',
+      },
+      {
+        trigger: '"Why can\'t you give at least an ETA?"',
+        response: 'I completely understand how frustrating it can be. Our pros do have multiple properties to care for during the day, and the time needed can vary depending on the work at each property — so it\'s hard to provide an exact timeframe. What I can assure you is that they work from sun up to sundown to complete all scheduled services. I recommend reaching out to your Pro through the Inbox — your message goes straight to them.',
+      },
+    ],
+  },
+  {
+    id: 'future',
+    label: '"What time on [future date]?"',
+    sub: 'Pre-service date inquiry',
+    track: 'B',
+    adminiNote: 'Customer Guidance — explain service window for that future date',
+    script: 'For [date], your service window will be [time range]. You\'ll also get an app notification the day of when your pro is heading your way.',
+    steps: [
+      { text: 'Set the expectation proactively — give the service window for that date', warn: false },
+      { text: 'Remind them they\'ll get a day-of app notification when pro is on the way', warn: false },
+      { text: 'Reassure they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
+    ],
+    rebuttals: [
+      {
+        trigger: '"Can\'t you give a more specific time?"',
+        response: 'Totally fair ask — the challenge is pros manage their own routes and timing shifts based on travel and the jobs before yours. The window is the most accurate we can give. The app notification will give you more real-time notice on the day of.',
+      },
+    ],
+  },
+  {
+    id: 'otw',
+    label: 'Got OTW notification — pro still not here',
+    sub: 'Arrival notification received, customer waiting',
+    track: 'A',
+    adminiNote: 'Customer Guidance — verify pro is still on route, no cancellations',
+    script: 'I completely understand the confusion, and I\'m really sorry for any worry this may have caused. Your lawn mowing service is still scheduled for today, [date]. I don\'t see any reschedules or cancellations from your assigned pro. It\'s possible your pro is on the way but may be experiencing traffic, finishing another scheduled property, or handling a minor delay. Rest assured, your service for today is confirmed, and they should be arriving soon.',
+    steps: [
+      { text: 'Empathy first — acknowledge the confusion and frustration', warn: false },
+      { text: 'Check admin — confirm no reschedule or cancellation', warn: false },
+      { text: 'Explain possible delays (traffic, prior property running long)', warn: false },
+      { text: 'Reassure service is confirmed for today', warn: false },
+    ],
+    rebuttals: [
+      {
+        trigger: '"It\'s almost sundown and they\'re still not here"',
+        response: 'I understand how concerning this is — let me check the status right now. [Check admin.] Your service is still confirmed for today. I\'m going to [action]. If your pro hasn\'t arrived by sundown, please call us back immediately and we will resolve this for you right away.',
+      },
+      {
+        trigger: '"I\'ve been waiting all day"',
+        response: 'I\'m so sorry you\'ve been waiting — that\'s not okay. Let me look into this right now. [Check if pro is still on route. If not coming → initiate BR or reschedule + offer credit.] I want to make sure we take care of this for you today.',
+      },
+    ],
+  },
+  {
+    id: 'noshow',
+    label: '⚠ Pro is late / didn\'t show',
+    sub: 'Highest frustration — lead with empathy',
+    track: 'C',
+    isHighPriority: true,
+    adminiNote: 'Check if BR is needed — may need to redistribute. Do NOT open with the policy.',
+    script: 'I\'m sorry you\'ve been waiting — let me look into this right now.',
+    steps: [
+      { text: '⚠ Lead with empathy — NOT the policy. "I\'m sorry you\'ve been waiting" BEFORE anything else.', warn: true },
+      { text: 'Check admin — is pro still on their route? Any scheduling notes?', warn: false },
+      { text: 'If pro is still coming: give updated ETA + apologize for the wait', warn: false },
+      { text: 'If pro is not coming: reschedule immediately + offer credit or expedited booking', warn: false },
+      { text: 'Remind them they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
+      { text: '⚠ Do NOT open with "Our pros have a service window of..." — this guarantees a bad survey', warn: true },
+    ],
+    rebuttals: [
+      {
+        trigger: '"This keeps happening" / "I\'m tired of waiting"',
+        response: 'You\'re right to be frustrated — waiting without any update isn\'t okay. Here\'s what I\'m going to do right now: [action]. I\'m also noting this on your account so our team is aware this has come up before.',
+      },
+      {
+        trigger: '"I want to cancel"',
+        response: '⚠ STOP the ATI script immediately. This is now a retention call — shift to the cancel/retention track. Do not continue with ATI guidance.',
+        isWarning: true,
+      },
+    ],
+  },
+  {
+    id: 'messaging',
+    label: 'Messaging pro, no response',
+    sub: 'Customer sent messages, pro not replying',
+    track: 'A',
+    adminiNote: 'Customer Guidance — reassure service is confirmed, redirect to Inbox',
+    script: 'I completely understand how frustrating it can be when you haven\'t heard back from your Pro yet, and I\'m really sorry for the inconvenience. Our Pros do have multiple properties to care for during the day, but please rest assured that your service is still confirmed and they have until sundown to complete it.',
+    steps: [
+      { text: 'Acknowledge frustration with genuine empathy', warn: false },
+      { text: 'Explain pros manage multiple properties and aren\'t always on their phones', warn: false },
+      { text: 'Reassure service is confirmed — they have until sundown', warn: false },
+      { text: 'Encourage continued use of Inbox for direct pro communication', warn: false },
+    ],
+    rebuttals: [
+      {
+        trigger: 'Messaged pro days before service, still no reply',
+        response: 'I completely understand — and I\'m sorry your message hasn\'t been answered yet. Our pros aren\'t always on their phones, especially once they\'re on a property and starting a service. Rest assured your service for [date] is still scheduled and confirmed.',
+      },
+    ],
+  },
+  {
+    id: 'talk',
+    label: 'Wants to talk to pro before/during service',
+    sub: 'Special instructions or concerns',
+    track: 'A',
+    adminiNote: 'Customer Guidance — direct to Inbox or add job/subscription note',
+    script: 'If there\'s anything specific you\'d like the Pro to focus on — like certain areas to mow or any special instructions — you can leave notes in your account or send a message directly to your Pro through Inbox in our app or website. That way, everything will be handled exactly the way you\'d like, even if you\'re not at home. I\'d be happy to help leave a note for your Pro here in your account as well. May I ask what instructions you\'d like me to include?',
+    steps: [
+      { text: 'Reassure they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
+      { text: 'Direct to Inbox in app/website for direct messaging to pro', warn: false },
+      { text: 'Offer to add a job/subscription note yourself right now', warn: false },
+      { text: '⚠ Do NOT add a note reminding the pro to "notify customer upon arrival" — that\'s not permitted', warn: true },
+    ],
+    rebuttals: [
+      {
+        trigger: '"Can you give me the pro\'s phone number?"',
+        response: 'I\'m not able to share the pro\'s direct number — we follow data privacy standards to protect both customers and pros. The best way to reach them is through the Inbox in your app or website. Messages go straight to the pro, and I can also add a note on your account right now if you\'d like.',
+      },
+    ],
+  },
+  {
+    id: 'phonenumber',
+    label: 'Wants pro\'s phone number',
+    sub: 'Privacy policy + Inbox redirect',
+    track: 'A',
+    adminiNote: 'N/A — privacy policy applies regardless of Schedule Decision',
+    script: 'I\'m not able to share the pro\'s direct phone number — we follow data privacy standards to keep both customers and pros protected. The best way to reach them directly is through the Inbox in your app or website. Messages go straight to the pro, and you\'ll be able to stay up-to-date on your service that way.',
+    steps: [
+      { text: 'Explain privacy policy — cannot share pro\'s number (or vice versa)', warn: false },
+      { text: 'Direct to Inbox in app/website as the direct channel', warn: false },
+      { text: 'If not tech-savvy: offer to add a job note on their behalf right now', warn: false },
+      { text: 'Remind them it\'s an app-based service — this protects them too', warn: false },
+    ],
+    rebuttals: [
+      {
+        trigger: '"I\'m not tech-savvy / I don\'t use the app"',
+        response: 'No problem at all — I can add a note directly to your account for your pro right now. What would you like me to include?',
+      },
+      {
+        trigger: '"I just need to quickly ask them something"',
+        response: 'I completely understand — the quickest way I can help right now is to add a note to your account that your pro will see. What would you like me to pass along? I can do that while we\'re on the call.',
+      },
+    ],
+  },
+  {
+    id: 'exact',
+    label: 'Insisting on an exact arrival time',
+    sub: 'Won\'t accept the service window',
+    track: 'A',
+    adminiNote: 'Customer Guidance — sun up to sundown + multiple properties + Inbox',
+    script: 'I completely understand how frustrating it can be not to have a specific time for your service, and I\'m really sorry for the inconvenience. What I can assure you is that our Pros work from sun up to sundown to complete all scheduled services. Since they also have other properties to take care of, and the time needed can vary depending on the work at each property, it\'s hard to provide an exact timeframe. I recommend reaching out to your Pro directly through the Inbox in our app or website — your message goes straight to them.',
+    steps: [
+      { text: 'Lead with genuine empathy — don\'t skip this', warn: false },
+      { text: 'Explain sun up to sundown + multiple properties (this is the why, not just a policy)', warn: false },
+      { text: 'Direct to Inbox — gives them the most real-time info available', warn: false },
+    ],
+    rebuttals: [
+      {
+        trigger: '"This is unacceptable — I need to plan my day"',
+        response: 'That\'s completely fair. Here\'s what I\'d suggest: you actually don\'t need to be home for the service at all — just make sure your gates are unlocked and pets are indoors. That way you can go about your day, and the pro can start as soon as they arrive. You\'ll also get an app notification when they\'re on their way.',
+      },
+      {
+        trigger: 'Customer insisting after second explanation',
+        response: '⚠ Stop repeating the policy — break the loop. Offer a concrete next step: "What I can do right now is send a note to your pro through the system asking them to message you as soon as they\'re on their way. Would that help?"',
+        isWarning: true,
+      },
+    ],
+  },
+];
+
+// ── Render functions ────────────────────────────────────────────────────────
+
+function renderAdmini() {
+  return `
+    <div class="card">
+      <div class="card-title">Step 1 — Check ADmini Schedule Decision</div>
+      <div class="admini-box">
+        <strong>How to access:</strong> Open call ticket → <strong>Apps</strong> (left panel) → <strong>CX Info</strong> → scroll to <strong>Schedule Decision</strong><br>
+        <div class="not-for">⚠ Lawn Mowing only. Do NOT use for: MQ/IQ additional services · Mowing fix schedule · Lawn mowing disputes</div>
+      </div>
+      <div style="font-size:0.78rem;color:#718096;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">What does Schedule Decision show?</div>
+      <div class="decision-grid">
+        <button class="btn-decision btn-cg" onclick="selectDecision('cg')">
+          ✓ Customer Guidance
+          <div class="d-sub">Inform customer of their scheduled service</div>
+        </button>
+        <button class="btn-decision btn-br" onclick="selectDecision('br')">
+          ⚡ Bulk Redistribute
+          <div class="d-sub">A new pro needs to be assigned</div>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderBR() {
+  return `
+    <div class="nav-row">
+      <button class="btn-nav" onclick="goBack()">← Back</button>
+    </div>
+    <div class="card">
+      <div class="card-title">⚡ Bulk Redistribute</div>
+      <div class="script-box">
+        <div class="script-label">📢 Say this</div>
+        <div class="script-text">I've arranged for a new Pro to take care of your service for [date] and this may take up to 48 hours. Once your Pro is confirmed, you'll receive a notification via email and SMS so you can stay updated.</div>
+      </div>
+      <div class="section-label">Action checklist</div>
+      <div>
+        <div class="checklist-item"><span class="check-num">1</span><span>Confirm redistribution has been triggered in ADmini</span></div>
+        <div class="checklist-item"><span class="check-num">2</span><span>Tell customer new pro assignment may take up to <strong>48 hours</strong></span></div>
+        <div class="checklist-item"><span class="check-num">3</span><span>Confirm they'll receive an email + SMS notification once a new pro is assigned</span></div>
+        <div class="checklist-item"><span class="check-num warn">!</span><span>If redistribution is not applicable — take a screenshot and include it in internal notes</span></div>
+      </div>
+      <div class="warning-box">
+        <div class="warning-label">⚠ Remember</div>
+        <div class="warning-item">Do NOT use Schedule Decision for MQ/IQ services, mowing fixes, or disputes</div>
+        <div class="warning-item">Do NOT offer to leave a note for the pro to "notify customer upon arrival"</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderScenarios() {
+  const buttons = scenarios.map(s => `
+    <button class="btn-scenario ${s.isHighPriority ? 'track-c' : ''}" onclick="selectScenario('${s.id}')">
+      <div>${s.label}</div>
+      <div class="s-sub">${s.sub}</div>
+    </button>
+  `).join('');
+
+  return `
+    <div class="nav-row">
+      <button class="btn-nav" onclick="goBack()">← Back</button>
+    </div>
+    <div class="card">
+      <div class="card-title">Step 2 — What is the customer's situation?</div>
+      <div class="scenario-grid">${buttons}</div>
+    </div>
+  `;
+}
+
+function renderScript() {
+  const s = scenarios.find(x => x.id === state.scenario);
+  if (!s) return '';
+
+  const trackClass = s.track.toLowerCase();
+
+  const steps = s.steps.map((step, i) => `
+    <div class="checklist-item">
+      <span class="check-num ${step.warn ? 'warn' : ''}">${step.warn ? '!' : i + 1}</span>
+      <span>${step.text}</span>
+    </div>
+  `).join('');
+
+  const rebuttals = s.rebuttals.map(r => `
+    <div class="rebuttal-item ${r.isWarning ? 'is-warning' : ''}" onclick="toggleRebuttal(this)">
+      <div class="rebuttal-trigger">
+        <span>💬 ${r.trigger}</span>
+        <span class="rebuttal-arrow">▼</span>
+      </div>
+      <div class="rebuttal-body">${r.response}</div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="nav-row">
+      <button class="btn-nav" onclick="goBack()">← Scenarios</button>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span class="track-badge ${trackClass}">Track ${s.track}</span>
+        <div style="font-size:0.95rem;font-weight:700;color:#2d3748;">${s.label}</div>
+      </div>
+      <div class="admini-box">
+        <strong>ADmini:</strong> ${s.adminiNote}
+      </div>
+      <div class="script-box ${s.isHighPriority ? 'track-c' : ''}">
+        <div class="script-label">📢 Say this first</div>
+        <div class="script-text">${s.script}</div>
+      </div>
+      <div class="section-label">Action steps</div>
+      <div>${steps}</div>
+      ${rebuttals ? `
+        <div class="rebuttals-section">
+          <div class="rebuttal-header">💬 Rebuttals — tap to expand</div>
+          ${rebuttals}
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+// ── Render ──────────────────────────────────────────────────────────────────
+function render() {
+  const app = document.getElementById('app');
+  window.scrollTo(0, 0);
+  switch (state.step) {
+    case 'admini':   app.innerHTML = renderAdmini();   break;
+    case 'br':       app.innerHTML = renderBR();       break;
+    case 'scenario': app.innerHTML = renderScenarios(); break;
+    case 'script':   app.innerHTML = renderScript();   break;
+  }
+}
+
+render();
+</script>
+</body>
+</html>
