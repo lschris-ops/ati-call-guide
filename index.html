@@ -454,7 +454,7 @@ const scenarios = [
     rebuttals: [
       {
         trigger: '"I need an exact time"',
-        response: 'I wish I could give you one — I don\'t have real-time GPS access to the pro\'s location. Our pros work sun up to sun down and you\'ll get an app notification when they\'re en route. If they haven\'t arrived by sundown, please call us back and we\'ll follow up directly with the pro.',
+        response: 'I wish I could give you one — we\'re not able to monitor the pro\'s route, but your service is confirmed and hasn\'t been rescheduled or cancelled. Our pros work sun up to sun down and you\'ll get an app notification when they\'re on their way. If they haven\'t arrived by sundown, please call us back and we\'ll follow up directly with the pro.',
       },
       {
         trigger: '"Why can\'t you give at least an ETA?"',
@@ -486,7 +486,7 @@ const scenarios = [
     label: 'Got OTW notification — pro still not here',
     sub: 'Arrival notification received, customer waiting',
     track: 'A',
-    adminiNote: 'Customer Guidance — verify pro is still on route, no cancellations',
+    adminiNote: 'Customer Guidance — verify no reschedule or cancellation in admin',
     script: 'I completely understand the confusion, and I\'m really sorry for any worry this may have caused. Your lawn mowing service is still scheduled for today, [date]. I don\'t see any reschedules or cancellations from your assigned pro. It\'s possible your pro is on the way but may be experiencing traffic, finishing another scheduled property, or handling a minor delay. Rest assured, your service for today is confirmed, and they should be arriving soon.',
     steps: [
       { text: 'Empathy first — acknowledge the confusion and frustration', warn: false },
@@ -501,7 +501,7 @@ const scenarios = [
       },
       {
         trigger: '"I\'ve been waiting all day"',
-        response: 'I\'m so sorry you\'ve been waiting — that\'s not okay. Let me look into this right now. [Check if pro is still on route. If not coming → initiate BR or reschedule + offer credit.] I want to make sure we take care of this for you today.',
+        response: 'I\'m so sorry you\'ve been waiting — that\'s not okay. Let me look into this right now. [Check admin for any reschedule or cancellation. If service is no longer active → initiate BR or reschedule + offer credit.] I want to make sure we take care of this for you today.',
       },
     ],
   },
@@ -515,7 +515,7 @@ const scenarios = [
     script: 'I\'m sorry you\'ve been waiting — let me look into this right now.',
     steps: [
       { text: '⚠ Lead with empathy — NOT the policy. "I\'m sorry you\'ve been waiting" BEFORE anything else.', warn: true },
-      { text: 'Check admin — is pro still on their route? Any scheduling notes?', warn: false },
+      { text: 'Check admin — any reschedule, cancellation, or scheduling notes? If none, service is confirmed and pro has until sundown', warn: false },
       { text: 'If pro is still coming: give updated ETA + apologize for the wait', warn: false },
       { text: 'If pro is not coming: reschedule immediately + offer credit or expedited booking', warn: false },
       { text: 'Remind them they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
