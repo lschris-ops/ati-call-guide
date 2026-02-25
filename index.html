@@ -449,12 +449,12 @@ const scenarios = [
       { text: 'Acknowledge first — "I completely understand, you want to plan your day around this, that makes total sense."', warn: false },
       { text: 'Confirm service is scheduled for today — pros work sun up to sun down', warn: false },
       { text: 'Offer Inbox in the app/website as the best real-time update channel', warn: false },
-      { text: 'Remind them they\'ll get an app notification when pro is en route', warn: false },
+      { text: 'Direct them to message the pro via Inbox in the app/website to get an update', warn: false },
     ],
     rebuttals: [
       {
         trigger: '"I need an exact time"',
-        response: 'I wish I could give you one — we\'re not able to monitor the pro\'s route, but your service is confirmed and hasn\'t been rescheduled or cancelled. Our pros work sun up to sun down and you\'ll get an app notification when they\'re on their way. If they haven\'t arrived by sundown, please call us back and we\'ll follow up directly with the pro.',
+        response: 'I wish I could give you one — we\'re not able to monitor the pro\'s route, but your service is confirmed and hasn\'t been rescheduled or cancelled. Our pros work sun up to sun down. The best way to get an update is to message your pro directly through the Inbox in our app or website. If they haven\'t arrived by sundown, please call us back and we\'ll follow up directly with the pro.',
       },
       {
         trigger: '"Why can\'t you give at least an ETA?"',
@@ -468,16 +468,16 @@ const scenarios = [
     sub: 'Pre-service date inquiry',
     track: 'B',
     adminiNote: 'Customer Guidance — confirm service for that date, sun up to sun down',
-    script: 'For [date], your pro is confirmed and they work sun up to sun down. You\'ll also get an app notification the day of when your pro is heading your way.',
+    script: 'For [date], your pro is confirmed and they work sun up to sun down. If you\'d like to reach out to your pro, you can message them directly through the Inbox in our app or website.',
     steps: [
       { text: 'Set the expectation proactively — confirm the date and sun up to sun down timeframe', warn: false },
-      { text: 'Remind them they\'ll get a day-of app notification when pro is on the way', warn: false },
+      { text: 'Direct them to message the pro via Inbox in the app/website if they want to follow up', warn: false },
       { text: 'Reassure they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
     ],
     rebuttals: [
       {
         trigger: '"Can\'t you give a more specific time?"',
-        response: 'Totally fair ask — the challenge is pros manage their own routes and timing shifts based on travel and the jobs before yours. The most accurate timeframe we can give is sun up to sun down. The app notification will give you more real-time notice on the day of.',
+        response: 'Totally fair ask — the challenge is pros manage their own routes and timing shifts based on travel and the jobs before yours. The most accurate timeframe we can give is sun up to sun down. If you\'d like to follow up with your pro directly, you can message them through the Inbox in our app or website.',
       },
     ],
   },
@@ -612,7 +612,7 @@ const scenarios = [
     rebuttals: [
       {
         trigger: '"This is unacceptable — I need to plan my day"',
-        response: 'That\'s completely fair. Here\'s what I\'d suggest: you actually don\'t need to be home for the service at all — just make sure your gates are unlocked and pets are indoors. That way you can go about your day, and the pro can start as soon as they arrive. You\'ll also get an app notification when they\'re on their way.',
+        response: 'That\'s completely fair. Here\'s what I\'d suggest: you actually don\'t need to be home for the service at all — just make sure your gates are unlocked and pets are indoors. That way you can go about your day, and the pro can start as soon as they arrive. If you\'d like to check in with your pro, you can message them directly through the Inbox in our app or website.',
       },
       {
         trigger: 'Customer insisting after second explanation',
