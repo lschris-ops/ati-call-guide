@@ -497,11 +497,11 @@ const scenarios = [
     rebuttals: [
       {
         trigger: '"It\'s almost sundown and they\'re still not here"',
-        response: 'I understand how concerning this is — let me check the status right now. [Check admin.] Your service is still confirmed for today. I\'m going to [action]. If your pro hasn\'t arrived by sundown, please call us back immediately and we will resolve this for you right away.',
+        response: 'I understand how concerning this is — let me check the status right now. [Check admin.] Your service is still confirmed for today and your pro is still assigned to your property. The best way to get an update is to message your pro directly through the Inbox in our app or website.',
       },
       {
         trigger: '"I\'ve been waiting all day"',
-        response: 'I\'m so sorry you\'ve been waiting — that\'s not okay. Let me look into this right now. [Check admin for any reschedule or cancellation. If service is no longer active → initiate BR or reschedule + offer credit.] I want to make sure we take care of this for you today.',
+        response: 'I\'m so sorry you\'ve been waiting — that\'s not okay. Let me look into this right now. [Check admin for any reschedule or cancellation. If service is still active → confirm pro is still assigned and direct to Inbox. If service is no longer active → initiate BR or reschedule.] I want to make sure we take care of this for you today.',
       },
     ],
   },
@@ -517,7 +517,8 @@ const scenarios = [
       { text: '⚠ Lead with empathy — NOT the policy. "I\'m sorry you\'ve been waiting" BEFORE anything else.', warn: true },
       { text: 'Check admin — any reschedule, cancellation, or scheduling notes? If none, service is confirmed and pro has until sundown', warn: false },
       { text: 'If pro is still coming: give updated ETA + apologize for the wait', warn: false },
-      { text: 'If pro is not coming: reschedule immediately + offer credit or expedited booking', warn: false },
+      { text: 'If pro is still assigned: confirm service is active and direct customer to message the pro via Inbox', warn: false },
+      { text: 'If service is no longer active: reschedule immediately via BR', warn: false },
       { text: 'Remind them they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
       { text: '⚠ Do NOT lead with the sun up to sun down timeframe — empathy first, then explain', warn: true },
     ],
