@@ -3,340 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATI Call Guide — Tier II Phone</title>
+<title>ATI Call Guide — Cheat Sheet</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #f0f4f8;
   color: #2d3748;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  font-size: 0.78rem;
 }
 
 /* ── Header ─────────────────────────────────────────── */
 .header {
   background: #276749;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
-.header h1 { font-size: 1rem; font-weight: 700; }
-.badge {
-  background: rgba(255,255,255,0.2);
-  border-radius: 12px;
-  padding: 3px 10px;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
+.header h1 { font-size: 0.95rem; font-weight: 700; }
+.header-right { display: flex; gap: 16px; font-size: 0.75rem; opacity: 0.9; }
+.header-right span::before { content: "· "; }
 
 /* ── Rules bar ──────────────────────────────────────── */
 .rules-bar {
-  background: #e6fffa;
-  border-bottom: 2px solid #b2f5ea;
-  padding: 8px 20px;
-  font-size: 0.88rem;
-  color: #234e52;
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-shrink: 0;
-}
-.rules-bar strong { color: #276749; }
-.rules-divider { color: #b2f5ea; }
-
-/* ── Body layout ────────────────────────────────────── */
-.body {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-}
-
-/* ── Left sidebar ───────────────────────────────────── */
-.sidebar {
-  width: 220px;
-  flex-shrink: 0;
-  background: white;
-  border-right: 1px solid #e2e8f0;
-  overflow-y: auto;
-  padding: 10px 0;
-}
-.sidebar-section-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #a0aec0;
-  padding: 8px 14px 4px;
-}
-.sidebar-divider {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-  margin: 8px 0;
-}
-.scenario-btn {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 9px 14px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #4a5568;
-  line-height: 1.4;
-  border-left: 3px solid transparent;
-  transition: all 0.1s;
-}
-.scenario-btn:hover { background: #f7fafc; color: #276749; }
-.scenario-btn.active {
-  background: #f0fff4;
-  color: #276749;
-  border-left-color: #276749;
-}
-.scenario-btn.track-c { color: #742a2a; }
-.scenario-btn.track-c:hover { background: #fff5f5; color: #c53030; }
-.scenario-btn.track-c.active {
-  background: #fff5f5;
-  color: #c53030;
-  border-left-color: #c53030;
-}
-.scenario-btn .s-sub {
-  font-size: 0.7rem;
-  font-weight: 400;
-  color: #a0aec0;
-  margin-top: 2px;
-}
-.scenario-btn.track-c .s-sub { color: #fc8181; }
-.scenario-btn.active .s-sub { color: #68d391; }
-.scenario-btn.track-c.active .s-sub { color: #fc8181; }
-
-/* ── Right content ──────────────────────────────────── */
-.content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 20px;
-}
-
-/* ── Empty state ────────────────────────────────────── */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: #a0aec0;
-  text-align: center;
-  gap: 10px;
-}
-.empty-state .arrow { font-size: 2rem; }
-.empty-state p { font-size: 0.88rem; }
-
-/* ── ADmini box ─────────────────────────────────────── */
-.admini-box {
-  background: #faf5ff;
-  border: 1px solid #d6bcfa;
-  border-radius: 8px;
-  padding: 9px 14px;
-  font-size: 0.8rem;
-  color: #44337a;
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-.admini-box strong { color: #553c9a; }
-
-/* ── Script box ─────────────────────────────────────── */
-.script-box {
-  background: #ebf8ff;
-  border-left: 4px solid #3182ce;
-  border-radius: 0 8px 8px 0;
-  padding: 14px 16px;
-  margin-bottom: 14px;
-  font-size: 0.9rem;
-  line-height: 1.75;
-  color: #1a365d;
-}
-.script-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #3182ce;
-  margin-bottom: 7px;
-}
-.script-text { font-style: italic; }
-.script-box.track-c { background: #fff5f5; border-left-color: #c53030; color: #742a2a; }
-.script-box.track-c .script-label { color: #c53030; }
-
-/* ── Section label ──────────────────────────────────── */
-.section-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #a0aec0;
-  margin: 14px 0 7px;
-}
-
-/* ── Checklist ──────────────────────────────────────── */
-.checklist-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  padding: 7px 0;
-  font-size: 0.85rem;
-  border-bottom: 1px solid #f0f4f8;
-  line-height: 1.5;
-}
-.checklist-item:last-child { border-bottom: none; }
-.check-num {
   background: #276749;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 5px 16px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
+  gap: 20px;
+  font-size: 0.75rem;
+  color: #c6f6d5;
+  flex-wrap: wrap;
+}
+.rules-bar strong { color: white; }
+
+/* ── Grid ───────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+/* ── Card ───────────────────────────────────────────── */
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.card-header {
+  padding: 7px 10px;
   font-weight: 700;
-  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: white;
+  line-height: 1.3;
+}
+.card-header .sub {
+  font-weight: 400;
+  font-size: 0.68rem;
+  opacity: 0.88;
   margin-top: 1px;
 }
-.check-num.warn { background: #c53030; }
+.card-body { padding: 8px 10px; }
+
+/* Header colors */
+.green  .card-header { background: #276749; }
+.blue   .card-header { background: #2b6cb0; }
+.red    .card-header { background: #c53030; }
+.orange .card-header { background: #c05621; }
+
+/* ── Script ─────────────────────────────────────────── */
+.script {
+  font-style: italic;
+  color: #2b4a8c;
+  background: #ebf8ff;
+  border-left: 3px solid #3182ce;
+  padding: 6px 8px;
+  margin-bottom: 7px;
+  line-height: 1.5;
+  font-size: 0.75rem;
+  border-radius: 0 4px 4px 0;
+}
+.red .script, .orange .script {
+  color: #742a2a;
+  background: #fff5f5;
+  border-left-color: #c53030;
+}
+.script-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #3182ce;
+  margin-bottom: 3px;
+}
+.red .script-label, .orange .script-label { color: #c53030; }
+
+/* ── Steps ──────────────────────────────────────────── */
+.steps { margin-bottom: 7px; }
+.step {
+  display: flex;
+  gap: 5px;
+  padding: 2px 0;
+  line-height: 1.4;
+  color: #4a5568;
+  font-size: 0.73rem;
+}
+.step-dot {
+  color: #276749;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.step.warn .step-dot { color: #c53030; }
+.step.warn { color: #742a2a; }
+
+/* ── Divider ────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px dashed #e2e8f0;
+  margin: 6px 0;
+}
 
 /* ── Rebuttals ──────────────────────────────────────── */
-.rebuttals-section { margin-top: 14px; }
-.rebuttal-header {
-  font-size: 0.65rem;
+.rebuttal-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #744210;
+  margin-bottom: 4px;
+}
+.rebuttal {
+  margin-bottom: 5px;
+  padding: 5px 7px;
+  background: #fffaf0;
+  border-left: 2px solid #fbd38d;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.72rem;
+}
+.rebuttal.warn-r {
+  background: #fff5f5;
+  border-left-color: #fc8181;
+}
+.rebuttal .trigger {
   font-weight: 700;
   color: #744210;
-  margin-bottom: 7px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+  font-size: 0.7rem;
 }
-.rebuttal-item {
-  border: 1px solid #fbd38d;
-  border-radius: 8px;
-  margin-bottom: 7px;
-  overflow: hidden;
-}
-.rebuttal-item.is-warning { border-color: #fc8181; }
-.rebuttal-trigger {
-  padding: 9px 14px;
-  background: #fffaf0;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #744210;
-  user-select: none;
-}
-.rebuttal-item.is-warning .rebuttal-trigger { background: #fff5f5; color: #742a2a; }
-.rebuttal-trigger:hover { filter: brightness(0.97); }
-.rebuttal-arrow { transition: transform 0.2s; font-size: 0.65rem; }
-.rebuttal-item.open .rebuttal-arrow { transform: rotate(180deg); }
-.rebuttal-body {
-  display: none;
-  padding: 12px 14px;
-  background: #fffdf5;
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: #1a202c;
-  border-top: 1px solid #fbd38d;
+.rebuttal.warn-r .trigger { color: #c53030; }
+.rebuttal .response {
+  color: #4a5568;
+  line-height: 1.4;
   font-style: italic;
 }
-.rebuttal-item.is-warning .rebuttal-body {
-  background: #fff5f5;
-  border-top-color: #fc8181;
+.rebuttal.warn-r .response {
   color: #742a2a;
   font-style: normal;
   font-weight: 600;
 }
-.rebuttal-item.open .rebuttal-body { display: block; }
 
-/* ── Track badge ────────────────────────────────────── */
-.track-badge {
-  display: inline-block;
-  border-radius: 6px;
-  padding: 3px 10px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  border: 1px solid;
-  margin-right: 6px;
-}
-.track-badge.a { background: #f0fff4; color: #276749; border-color: #276749; }
-.track-badge.b { background: #ebf8ff; color: #2b6cb0; border-color: #2b6cb0; }
-.track-badge.c { background: #fff5f5; color: #c53030; border-color: #c53030; }
-
-/* ── Bottom warnings ────────────────────────────────── */
-.bottom-warnings {
+/* ── Bottom bar ─────────────────────────────────────── */
+.bottom {
   background: #fff5f5;
   border-top: 2px solid #fc8181;
-  padding: 10px 20px;
-  flex-shrink: 0;
+  padding: 7px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-.bw-title {
+.bottom-label {
   font-weight: 700;
   color: #c53030;
-  margin-bottom: 6px;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  padding-top: 1px;
 }
-.bw-items { display: flex; flex-wrap: wrap; gap: 5px; }
-.bw-item {
+.bottom-items { display: flex; flex-wrap: wrap; gap: 4px; }
+.bottom-item {
   background: white;
   border: 1px solid #feb2b2;
   border-radius: 4px;
-  padding: 3px 9px;
+  padding: 2px 7px;
   color: #742a2a;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
 }
-.bw-item::before { content: "✗ "; color: #e53e3e; font-weight: 700; }
+.bottom-item::before { content: "✗ "; color: #e53e3e; font-weight: 700; }
 
-/* ── BR content ─────────────────────────────────────── */
-.warning-box {
-  background: #fff5f5;
-  border: 1px solid #feb2b2;
-  border-radius: 8px;
-  padding: 11px 14px;
-  margin-top: 12px;
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
 }
-.warning-box .warning-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #c53030;
-  margin-bottom: 6px;
-}
-.warning-item {
-  font-size: 0.82rem;
-  color: #742a2a;
-  padding: 3px 0;
-  display: flex;
-  gap: 6px;
-}
-.warning-item::before { content: "✗"; color: #e53e3e; font-weight: 700; flex-shrink: 0; }
-
-/* ── Responsive ─────────────────────────────────────── */
-@media (max-width: 600px) {
-  body { overflow: auto; }
-  .body { flex-direction: column; overflow: visible; }
-  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; overflow-y: visible; padding: 8px 0; }
-  .content { overflow: visible; }
-  .bottom-warnings { position: static; }
+@media (max-width: 500px) {
+  .grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -344,327 +206,261 @@ body {
 
 <div class="header">
   <h1>🌿 ATI Call Guide</h1>
-  <span class="badge">Tier II Phone</span>
+  <div class="header-right">
+    <span>Tier II Phone</span>
+    <span>Lawn Mowing only — not MQ/IQ, fixes, or disputes</span>
+  </div>
 </div>
-
 <div class="rules-bar">
   <span><strong>Timeframe:</strong> Sun up to sun down</span>
-  <span class="rules-divider">|</span>
-  <span><strong>ADmini:</strong> Call ticket → Apps → CX Info → Schedule Decision</span>
-  <span class="rules-divider">|</span>
-  <span><strong>Scope:</strong> Lawn Mowing only — not MQ/IQ, fixes, or disputes</span>
+  <span><strong>No exact time or ETA</strong> — we can't monitor the pro's route</span>
+  <span><strong>If not rescheduled or cancelled</strong> → service is confirmed</span>
+  <span><strong>Always push:</strong> Inbox in app/website — direct message to the pro</span>
+  <span><strong>ADmini:</strong> Apps → CX Info → Schedule Decision</span>
 </div>
 
-<div class="body">
-  <div class="sidebar" id="sidebar"></div>
-  <div class="content" id="content">
-    <div class="empty-state">
-      <div class="arrow">←</div>
-      <p>Select a scenario from the left<br>to see the script and rebuttals.</p>
+<div class="grid">
+
+  <!-- Card 1: ETA inquiry -->
+  <div class="card green">
+    <div class="card-header">
+      "When is my pro coming today?"
+      <div class="sub">Same-day ETA inquiry</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        Your service is scheduled for [date]. While I'm unable to provide a specific or estimated arrival time, our pros work from sun up to sun down. I recommend reaching out through Inbox in our app or website — that's the best way to get a response.
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> Acknowledge — "I understand, you want to plan your day."</div>
+        <div class="step"><span class="step-dot">✓</span> Confirm service is scheduled for today</div>
+        <div class="step"><span class="step-dot">✓</span> Sun up to sun down — no specific time</div>
+        <div class="step"><span class="step-dot">✓</span> Push Inbox — direct line to the pro</div>
+        <div class="step"><span class="step-dot">✓</span> No need to be home — unlock gates, keep pets indoors</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">"Can you give me at least an ETA?"</div>
+        <div class="response">We can't monitor the pro's route, but service is confirmed and hasn't been rescheduled or cancelled. Message your pro through Inbox — it goes straight to them.</div>
+      </div>
+      <div class="rebuttal">
+        <div class="trigger">"Why can't you just give me a time?"</div>
+        <div class="response">Pros handle multiple properties — time varies per lot size and service type. They plan their own routes to save time and effort. Service is confirmed, pro has until sundown.</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="bottom-warnings">
-  <div class="bw-title">❌ Never say on any ATI call</div>
-  <div class="bw-items">
-    <span class="bw-item">"There's nothing I can do about the time"</span>
-    <span class="bw-item">"The pro has their own schedule"</span>
-    <span class="bw-item">"You can check the app" as the only option</span>
-    <span class="bw-item">Repeat the same policy twice without a next step</span>
-    <span class="bw-item">Offer credit or expedited booking</span>
-    <span class="bw-item">Give or share the pro's phone number</span>
-    <span class="bw-item">Offer to leave a note reminding pro to notify customer on arrival</span>
+  <!-- Card 2: Future date -->
+  <div class="card blue">
+    <div class="card-header">
+      "What time on [future date]?"
+      <div class="sub">Pre-service date inquiry</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        For [date], your pro is confirmed and they work sun up to sun down. If you'd like to reach out ahead of time, message your pro directly through Inbox in our app or website.
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> Confirm service is scheduled for that date</div>
+        <div class="step"><span class="step-dot">✓</span> Sun up to sun down — no specific time</div>
+        <div class="step"><span class="step-dot">✓</span> Push Inbox for direct pro communication</div>
+        <div class="step"><span class="step-dot">✓</span> No need to be home — unlock gates, keep pets indoors</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">"Can't you give a more specific time?"</div>
+        <div class="response">We can't provide a specific time or ETA. Pros work sun up to sun down and manage their own routes. Most direct way to follow up is through Inbox.</div>
+      </div>
+    </div>
   </div>
-</div>
 
-<script>
-let activeId = null;
+  <!-- Card 3: OTW message -->
+  <div class="card green">
+    <div class="card-header">
+      Got OTW message — pro still not here
+      <div class="sub">Confused by on-the-way notification</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        I completely understand the confusion and I'm really sorry. The on-the-way message is your pro's way of confirming they will complete your service today — not a real-time location. Your schedule is still confirmed and hasn't been rescheduled or cancelled.
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> Apologize for the confusion genuinely</div>
+        <div class="step"><span class="step-dot">✓</span> OTW message = pro's confirmation they're coming, not real-time GPS</div>
+        <div class="step"><span class="step-dot">✓</span> Check admin — confirm no reschedule or cancellation</div>
+        <div class="step"><span class="step-dot">✓</span> Service is confirmed and still active</div>
+        <div class="step"><span class="step-dot">✓</span> Push Inbox to follow up directly with the pro</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">"They said on the way but still not here"</div>
+        <div class="response">OTW message = confirmation of service, not live location. Service is still confirmed and active. Message your pro through Inbox for a direct update.</div>
+      </div>
+      <div class="rebuttal">
+        <div class="trigger">"It's almost sundown and still not here"</div>
+        <div class="response">Check admin — confirm schedule is still active, no reschedule or cancellation. Service is confirmed. Direct to Inbox to message the pro.</div>
+      </div>
+    </div>
+  </div>
 
-const scenarios = [
-  {
-    id: 'eta',
-    label: '"When is my pro coming today?"',
-    sub: 'Same-day ETA inquiry',
-    track: 'A',
-    adminiNote: 'Customer Guidance — confirm service is scheduled for today',
-    script: 'Your service is scheduled for [date]. While I\'m unable to provide a specific or estimated arrival time for your pro, our pros work from sun up to sun down. I also recommend reaching out to your pro through Inbox by logging into our app or website — that\'s the best way to get a response and stay up-to-date with your service.',
-    steps: [
-      { text: 'Acknowledge first — "I completely understand, you want to plan your day around this."', warn: false },
-      { text: 'Confirm service is scheduled for today — sun up to sun down is the timeframe', warn: false },
-      { text: 'Direct to Inbox in app/website — this is the direct line to the pro', warn: false },
-      { text: 'Reassure them they do not need to be home — just unlock gates and keep pets indoors', warn: false },
-    ],
-    rebuttals: [
-      {
-        trigger: '"Can you give me at least an ETA?"',
-        response: 'I completely understand how frustrating it can be. We\'re not able to monitor the pro\'s route, but your service is confirmed and hasn\'t been rescheduled or cancelled. The best way to get a direct update is to message your pro through the Inbox in our app or website — your message goes straight to them.',
-      },
-      {
-        trigger: '"Why can\'t you just give me a time?"',
-        response: 'I completely understand. Our pros are assigned to multiple properties in a day, and each one can take a different amount of time depending on the lot size or the type of service. They also plan their own routes to save time, gas, and effort — so the schedule at each stop can shift. What I can assure you is that your service is confirmed and your pro has until sundown to complete it.',
-      },
-    ],
-  },
-  {
-    id: 'future',
-    label: '"What time on [future date]?"',
-    sub: 'Pre-service date inquiry',
-    track: 'B',
-    adminiNote: 'Customer Guidance — confirm service for that date',
-    script: 'For [date], your pro is confirmed and they work sun up to sun down. If you\'d like to reach out to your pro ahead of time, you can message them directly through the Inbox in our app or website.',
-    steps: [
-      { text: 'Confirm service is scheduled for that date', warn: false },
-      { text: 'Sun up to sun down is the timeframe — we can\'t provide a more specific time', warn: false },
-      { text: 'Direct to Inbox to message the pro directly if they want to follow up', warn: false },
-      { text: 'Reassure them they do not need to be home — just unlock gates and keep pets indoors', warn: false },
-    ],
-    rebuttals: [
-      {
-        trigger: '"Can\'t you give a more specific time?"',
-        response: 'I completely understand — unfortunately we\'re not able to provide a specific time or ETA. Our pros work sun up to sun down and manage their own routes. The most direct way to follow up with your pro is through the Inbox in our app or website.',
-      },
-    ],
-  },
-  {
-    id: 'otw',
-    label: 'Got OTW message — pro still not here',
-    sub: 'Confused by on-the-way notification',
-    track: 'A',
-    adminiNote: 'Customer Guidance — verify no reschedule or cancellation in admin',
-    script: 'I completely understand the confusion and I\'m really sorry about that. The on-the-way message your pro sent is actually their way of confirming that they will be completing your lawn mowing service today. Your schedule is still confirmed and hasn\'t been rescheduled or cancelled. While we\'re not able to monitor the pro\'s exact route, rest assured your service is still active for today.',
-    steps: [
-      { text: 'Apologize for the confusion — acknowledge it genuinely', warn: false },
-      { text: 'Explain the OTW message is the pro\'s confirmation they\'re coming — not a real-time location', warn: false },
-      { text: 'Check admin — confirm no reschedule or cancellation', warn: false },
-      { text: 'Reassure service is confirmed and still active for today', warn: false },
-      { text: 'Direct to Inbox if they want to follow up directly with the pro', warn: false },
-    ],
-    rebuttals: [
-      {
-        trigger: '"They said on the way but still not here"',
-        response: 'I completely understand, and I\'m truly sorry for the confusion. The on-the-way message is how pros confirm they\'ll be completing your service today — it\'s not a real-time location update. Your service is still confirmed and active. If you\'d like to follow up directly, message your pro through the Inbox in our app or website.',
-      },
-      {
-        trigger: '"It\'s almost sundown and they\'re still not here"',
-        response: 'I understand how concerning that is, and I\'m sorry. Let me check your account right now. [Check admin — confirm schedule is still active, no reschedule or cancellation.] Your service is still confirmed. Please message your pro through the Inbox in our app or website to follow up directly.',
-      },
-    ],
-  },
-  {
-    id: 'noshow',
-    label: '⚠ Pro is late / hasn\'t shown up',
-    sub: 'Customer has been waiting',
-    track: 'C',
-    isHighPriority: true,
-    adminiNote: 'Check admin — confirm schedule is still active, no reschedule or cancellation',
-    script: 'I\'m sorry you\'ve been waiting — let me look into this right now.',
-    steps: [
-      { text: '⚠ Lead with empathy first — NOT the sun up to sun down timeframe', warn: true },
-      { text: 'Check admin — is the schedule still active? Any reschedule or cancellation?', warn: false },
-      { text: 'Confirm to the customer the schedule is still active and the pro is still assigned', warn: false },
-      { text: 'Direct to Inbox — customer can message the pro directly for an update', warn: false },
-      { text: '⚠ No BR, no credit — confirming the schedule is active is the only action here', warn: true },
-    ],
-    rebuttals: [
-      {
-        trigger: '"This keeps happening / I\'m tired of waiting"',
-        response: 'You\'re right to be frustrated, and I\'m truly sorry. I\'ve checked your account and your service is still confirmed — your pro is still assigned to your property. The best thing I can suggest right now is to message your pro directly through the Inbox in our app or website so you can get an update from them.',
-      },
-      {
-        trigger: '"I want to cancel"',
-        response: '⚠ This is now a retention call — stop the ATI script and shift to the cancel/retention track immediately.',
-        isWarning: true,
-      },
-    ],
-  },
-  {
-    id: 'messaging',
-    label: 'Messaging pro — no response',
-    sub: 'Customer sent messages, pro not replying',
-    track: 'A',
-    adminiNote: 'Customer Guidance — reassure service is confirmed, reinforce Inbox',
-    script: 'I completely understand how frustrating it can be when you haven\'t heard back from your pro yet, and I\'m really sorry for the inconvenience. Our pros do have multiple properties to care for during the day, but please rest assured that your service is still confirmed and your pro has until sundown to complete it.',
-    steps: [
-      { text: 'Acknowledge the frustration with genuine empathy', warn: false },
-      { text: 'Explain pros are managing multiple properties — not ignoring the message', warn: false },
-      { text: 'Reassure service is confirmed and still active', warn: false },
-      { text: 'Encourage continued use of Inbox — it\'s a direct message to the pro', warn: false },
-    ],
-    rebuttals: [
-      {
-        trigger: 'Messaged days before service, still no reply',
-        response: 'I understand — and I\'m sorry the message hasn\'t been answered yet. Our pros aren\'t always on their phones between jobs. Rest assured your service for [date] is still scheduled and confirmed.',
-      },
-    ],
-  },
-  {
-    id: 'talk',
-    label: 'Wants to speak with pro / leave instructions',
-    sub: 'Special instructions or concerns',
-    track: 'A',
-    adminiNote: 'Customer Guidance — direct to Inbox or add job note',
-    script: 'If there\'s anything specific you\'d like the pro to focus on, like certain areas to mow or any special instructions, you can send a message directly to your pro through the Inbox in our app or website. I\'d also be happy to add a note to your account right now. May I ask what instructions you\'d like me to include?',
-    steps: [
-      { text: 'Reassure they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
-      { text: 'Direct to Inbox in app/website — direct message to the pro', warn: false },
-      { text: 'Offer to add a job/subscription note yourself right now', warn: false },
-      { text: '⚠ Do NOT add a note reminding the pro to notify the customer upon arrival', warn: true },
-    ],
-    rebuttals: [
-      {
-        trigger: '"Can you give me the pro\'s phone number?"',
-        response: 'I\'m not able to share the pro\'s direct number — we follow data privacy standards to protect both customers and pros. The best way to reach them is through the Inbox in our app or website. Messages go straight to the pro, and I can also add a note to your account right now if you\'d like.',
-      },
-    ],
-  },
-  {
-    id: 'exact',
-    label: 'Insisting on an exact arrival time',
-    sub: 'Won\'t accept sun up to sun down',
-    track: 'A',
-    adminiNote: 'Customer Guidance — sun up to sun down, push Inbox',
-    script: 'I completely understand how frustrating it can be not to have a specific time, and I\'m really sorry for that. Unfortunately, we\'re not able to provide an exact time or ETA — our pros work sun up to sun down and manage their own routes. The most direct way to get an update is to message your pro through the Inbox in our app or website, as messages go straight to them.',
-    steps: [
-      { text: 'Lead with genuine empathy — don\'t skip this', warn: false },
-      { text: 'Be clear: we cannot provide an exact time or ETA', warn: false },
-      { text: 'Sun up to sun down is the only timeframe — explain pros manage their own routes', warn: false },
-      { text: 'Push Inbox firmly — it\'s the only direct line to the pro', warn: false },
-    ],
-    rebuttals: [
-      {
-        trigger: '"That\'s not acceptable — I need to plan my day"',
-        response: 'I completely understand, and I\'m sorry we can\'t give you a more specific time. Here\'s what I\'d suggest: you actually don\'t need to be home for the service at all. Just make sure your gates are unlocked and your pets are indoors — that way you can go about your day and the pro can start as soon as they arrive. If you\'d like to follow up with your pro directly, please use the Inbox in our app or website.',
-      },
-      {
-        trigger: '"Why can\'t you just give a time — it\'s not that hard"',
-        response: 'I hear you, and I wish I could. Our pros handle multiple properties in a day, and each one can take a different amount of time depending on the lot size or the type of service. They also plan their own routes to save time and effort — so the schedule can shift. Our pros work sun up to sun down, and the best way to reach your pro directly is through the Inbox in our app or website.',
-      },
-      {
-        trigger: 'Customer still pushing after second explanation',
-        response: '⚠ Stop repeating — break the loop. "I completely hear you, and I wish I could give you more. The Inbox is truly the only direct line to your pro right now. I\'d encourage you to send them a message there."',
-        isWarning: true,
-      },
-    ],
-  },
-];
+  <!-- Card 4: Pro late / no show -->
+  <div class="card red">
+    <div class="card-header">
+      ⚠ Pro is late / hasn't shown up
+      <div class="sub">Highest frustration — empathy first</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this first</div>
+        I'm sorry you've been waiting — let me look into this right now.
+      </div>
+      <div class="steps">
+        <div class="step warn"><span class="step-dot">!</span> Empathy FIRST — not the sun up to sun down timeframe</div>
+        <div class="step"><span class="step-dot">✓</span> Check admin — any reschedule or cancellation?</div>
+        <div class="step"><span class="step-dot">✓</span> Confirm schedule is still active, pro is still assigned</div>
+        <div class="step"><span class="step-dot">✓</span> Push Inbox — direct message to the pro</div>
+        <div class="step warn"><span class="step-dot">!</span> No BR, no credit — confirming active is the only action</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">"This keeps happening / I'm tired of waiting"</div>
+        <div class="response">You're right to be frustrated — I'm sorry. Service is confirmed, pro is still assigned. Message your pro through Inbox for a direct update.</div>
+      </div>
+      <div class="rebuttal warn-r">
+        <div class="trigger">"I want to cancel"</div>
+        <div class="response">⚠ STOP ATI script — shift to cancel/retention track immediately.</div>
+      </div>
+    </div>
+  </div>
 
-const brScenario = {
-  id: 'br',
-  label: '⚡ Bulk Redistribute',
-  sub: 'New pro needs to be assigned',
-};
+  <!-- Card 5: No response from pro -->
+  <div class="card green">
+    <div class="card-header">
+      Messaging pro — no response
+      <div class="sub">Customer sent messages, pro not replying</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        I completely understand how frustrating it can be when you haven't heard back, and I'm really sorry. Our pros have multiple properties to care for, but your service is still confirmed and your pro has until sundown to complete it.
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> Acknowledge frustration with genuine empathy</div>
+        <div class="step"><span class="step-dot">✓</span> Pros managing multiple properties — not ignoring them</div>
+        <div class="step"><span class="step-dot">✓</span> Service is confirmed and still active</div>
+        <div class="step"><span class="step-dot">✓</span> Encourage Inbox — it's the direct line to the pro</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">Messaged days before service, no reply</div>
+        <div class="response">Pros aren't always on their phones between jobs. Service for [date] is still scheduled and confirmed.</div>
+      </div>
+    </div>
+  </div>
 
-function buildSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  let html = '<div class="sidebar-section-label">Customer Guidance</div>';
-  scenarios.forEach(s => {
-    html += `
-      <button class="scenario-btn ${s.isHighPriority ? 'track-c' : ''}" id="btn-${s.id}" onclick="selectScenario('${s.id}')">
-        ${s.label}
-        <div class="s-sub">${s.sub}</div>
-      </button>
-    `;
-  });
-  html += '<hr class="sidebar-divider">';
-  html += '<div class="sidebar-section-label">Bulk Redistribute</div>';
-  html += `
-    <button class="scenario-btn track-c" id="btn-br" onclick="selectScenario('br')">
+  <!-- Card 6: Wants to talk / leave instructions -->
+  <div class="card green">
+    <div class="card-header">
+      Wants to speak with pro / leave instructions
+      <div class="sub">Special instructions or concerns</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        You can send a message directly to your pro through Inbox in our app or website. I'd also be happy to add a note to your account right now — what instructions would you like me to include?
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> No need to be home — unlock gates, keep pets indoors</div>
+        <div class="step"><span class="step-dot">✓</span> Direct to Inbox — direct message to the pro</div>
+        <div class="step"><span class="step-dot">✓</span> Offer to add a job/subscription note yourself</div>
+        <div class="step warn"><span class="step-dot">!</span> Do NOT add a note reminding pro to notify customer on arrival</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">"Can you give me the pro's phone number?"</div>
+        <div class="response">Can't share — data privacy protects both parties. Inbox is the direct line. Can add a note to their account right now.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 7: Insisting on exact time -->
+  <div class="card green">
+    <div class="card-header">
+      Insisting on an exact arrival time
+      <div class="sub">Won't accept sun up to sun down</div>
+    </div>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        I completely understand, and I'm really sorry. We're not able to provide an exact time or ETA — our pros work sun up to sun down and manage their own routes. The most direct way to get an update is through Inbox — your message goes straight to your pro.
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> Lead with genuine empathy — don't skip this</div>
+        <div class="step"><span class="step-dot">✓</span> Cannot provide exact time or ETA — be clear</div>
+        <div class="step"><span class="step-dot">✓</span> Sun up to sun down — pros manage their own routes</div>
+        <div class="step"><span class="step-dot">✓</span> Push Inbox firmly — only direct line to the pro</div>
+      </div>
+      <hr class="divider">
+      <div class="rebuttal-label">💬 Rebuttals</div>
+      <div class="rebuttal">
+        <div class="trigger">"I need to plan my day"</div>
+        <div class="response">No need to be home — unlock gates, keep pets indoors, go about your day. Pro starts when they arrive. Inbox for direct updates.</div>
+      </div>
+      <div class="rebuttal">
+        <div class="trigger">"Why can't you give a time — it's not hard"</div>
+        <div class="response">Pros handle multiple properties — time varies per lot and service type. They plan their own routes. Sun up to sun down. Inbox is the only direct line.</div>
+      </div>
+      <div class="rebuttal warn-r">
+        <div class="trigger">Still pushing after 2nd explanation</div>
+        <div class="response">⚠ Break the loop — "The Inbox is truly the only direct line to your pro. I'd encourage you to send them a message there."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 8: Bulk Redistribute -->
+  <div class="card orange">
+    <div class="card-header">
       ⚡ Bulk Redistribute
-      <div class="s-sub">New pro needs to be assigned</div>
-    </button>
-  `;
-  sidebar.innerHTML = html;
-}
-
-function selectScenario(id) {
-  // Update active state
-  if (activeId) {
-    const prev = document.getElementById('btn-' + activeId);
-    if (prev) prev.classList.remove('active');
-  }
-  activeId = id;
-  const curr = document.getElementById('btn-' + id);
-  if (curr) curr.classList.add('active');
-
-  // Render content
-  const content = document.getElementById('content');
-  content.scrollTop = 0;
-
-  if (id === 'br') {
-    content.innerHTML = renderBR();
-    return;
-  }
-
-  const s = scenarios.find(x => x.id === id);
-  if (!s) return;
-  content.innerHTML = renderScript(s);
-}
-
-function toggleRebuttal(el) { el.classList.toggle('open'); }
-
-function renderBR() {
-  return `
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-      <span class="track-badge c">BR</span>
-      <span style="font-size:0.95rem;font-weight:700;">Bulk Redistribute</span>
+      <div class="sub">ADmini shows BR — new pro needed</div>
     </div>
-    <div class="admini-box"><strong>ADmini shows:</strong> Bulk Redistribute — new pro needs to be assigned</div>
-    <div class="script-box track-c">
-      <div class="script-label">📢 Say this</div>
-      <div class="script-text">I've arranged for a new Pro to take care of your service for [date] and this may take up to 48 hours. Once your Pro is confirmed, you'll receive a notification via email and SMS so you can stay updated.</div>
-    </div>
-    <div class="section-label">Action checklist</div>
-    <div class="checklist-item"><span class="check-num">1</span><span>Confirm redistribution has been triggered in ADmini</span></div>
-    <div class="checklist-item"><span class="check-num">2</span><span>Tell customer new pro may take up to <strong>48 hours</strong> to assign</span></div>
-    <div class="checklist-item"><span class="check-num">3</span><span>Confirm they'll receive an email + SMS once a new pro is assigned</span></div>
-    <div class="checklist-item"><span class="check-num warn">!</span><span>If redistribution is not applicable — take a screenshot and include it in internal notes</span></div>
-    <div class="warning-box" style="margin-top:14px;">
-      <div class="warning-label">⚠ Remember</div>
-      <div class="warning-item">Do NOT use Schedule Decision for MQ/IQ services, mowing fixes, or disputes</div>
-    </div>
-  `;
-}
-
-function renderScript(s) {
-  const trackClass = s.track.toLowerCase();
-  const steps = s.steps.map((step, i) => `
-    <div class="checklist-item">
-      <span class="check-num ${step.warn ? 'warn' : ''}">${step.warn ? '!' : i + 1}</span>
-      <span>${step.text}</span>
-    </div>
-  `).join('');
-  const rebuttals = s.rebuttals.map(r => `
-    <div class="rebuttal-item ${r.isWarning ? 'is-warning' : ''}" onclick="toggleRebuttal(this)">
-      <div class="rebuttal-trigger">
-        <span>💬 ${r.trigger}</span>
-        <span class="rebuttal-arrow">▼</span>
+    <div class="card-body">
+      <div class="script">
+        <div class="script-label">📢 Say this</div>
+        I've arranged for a new Pro to take care of your service for [date] and this may take up to 48 hours. Once your Pro is confirmed, you'll receive a notification via email and SMS so you can stay updated.
       </div>
-      <div class="rebuttal-body">${r.response}</div>
-    </div>
-  `).join('');
-  return `
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-      <span class="track-badge ${trackClass}">Track ${s.track}</span>
-      <span style="font-size:0.95rem;font-weight:700;">${s.label}</span>
-    </div>
-    <div class="admini-box"><strong>ADmini:</strong> ${s.adminiNote}</div>
-    <div class="script-box ${s.isHighPriority ? 'track-c' : ''}">
-      <div class="script-label">📢 Say this first</div>
-      <div class="script-text">${s.script}</div>
-    </div>
-    <div class="section-label">Action steps</div>
-    <div>${steps}</div>
-    ${rebuttals ? `
-      <div class="rebuttals-section">
-        <div class="rebuttal-header">💬 Rebuttals — click to expand</div>
-        ${rebuttals}
+      <div class="steps">
+        <div class="step"><span class="step-dot">✓</span> Confirm redistribution triggered in ADmini</div>
+        <div class="step"><span class="step-dot">✓</span> New pro may take up to 48 hours to assign</div>
+        <div class="step"><span class="step-dot">✓</span> Customer gets email + SMS once new pro is confirmed</div>
+        <div class="step warn"><span class="step-dot">!</span> If BR not applicable — screenshot + add to internal notes</div>
+        <div class="step warn"><span class="step-dot">!</span> Do NOT use Schedule Decision for MQ/IQ, fixes, or disputes</div>
       </div>
-    ` : ''}
-  `;
-}
+    </div>
+  </div>
 
-buildSidebar();
-</script>
+</div>
+
+<div class="bottom">
+  <div class="bottom-label">❌ Never say</div>
+  <div class="bottom-items">
+    <span class="bottom-item">"There's nothing I can do about the time"</span>
+    <span class="bottom-item">"The pro has their own schedule"</span>
+    <span class="bottom-item">"Check the app" as the only option</span>
+    <span class="bottom-item">Repeat the same policy twice without a next step</span>
+    <span class="bottom-item">Offer credit or expedited booking</span>
+    <span class="bottom-item">Give or share the pro's phone number</span>
+    <span class="bottom-item">Offer to leave a note reminding pro to notify customer on arrival</span>
+  </div>
+</div>
+
 </body>
 </html>
