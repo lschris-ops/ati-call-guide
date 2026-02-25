@@ -387,7 +387,7 @@ body {
 </div>
 
 <div class="rules-bar">
-  <span><strong>Service Window:</strong> No pro / Pending = 2-day &nbsp;·&nbsp; Pro assigned = 1-day</span>
+  <span><strong>Timeframe:</strong> Sun up to sun down (pro is assigned — service is confirmed for today)</span>
   <span class="rules-divider">|</span>
   <span><strong>ADmini path:</strong> Call ticket → Apps → CX Info → Schedule Decision</span>
   <span class="rules-divider">|</span>
@@ -402,7 +402,7 @@ body {
     <span class="bw-item">"There's nothing I can do about the time"</span>
     <span class="bw-item">"The pro has their own schedule"</span>
     <span class="bw-item">"You can check the app" (as the only option)</span>
-    <span class="bw-item">Repeat the window policy twice without a next step</span>
+    <span class="bw-item">Repeat the same policy twice without offering a next step</span>
     <span class="bw-item">Offer to leave a note reminding pro to notify customer on arrival</span>
     <span class="bw-item">Give or share the pro's phone number</span>
   </div>
@@ -443,18 +443,18 @@ const scenarios = [
     label: '"When is my pro coming today?"',
     sub: 'Same-day ETA inquiry',
     track: 'A',
-    adminiNote: 'Customer Guidance — explain service window (1-day if pro assigned)',
+    adminiNote: 'Customer Guidance — confirm today\'s service is scheduled, sun up to sun down',
     script: 'Your service is scheduled for [date]. While I\'m unable to provide a specific or estimated arrival time for your pro, our pros work from sun up to sun down. I also recommend reaching out to your Pro through Inbox by logging into our app or website — that\'s the best way to get a response and stay up-to-date with your service.',
     steps: [
       { text: 'Acknowledge first — "I completely understand, you want to plan your day around this, that makes total sense."', warn: false },
-      { text: 'Give the service window (1-day if pro assigned, 2-day if no pro/pending)', warn: false },
+      { text: 'Confirm service is scheduled for today — pros work sun up to sun down', warn: false },
       { text: 'Offer Inbox in the app/website as the best real-time update channel', warn: false },
       { text: 'Remind them they\'ll get an app notification when pro is en route', warn: false },
     ],
     rebuttals: [
       {
         trigger: '"I need an exact time"',
-        response: 'I wish I could give you one — I don\'t have real-time GPS access to the pro\'s location. The window is [X] and you\'ll get an app notification when they\'re en route. If they haven\'t arrived by [end of window], please call us back and we\'ll follow up directly with the pro.',
+        response: 'I wish I could give you one — I don\'t have real-time GPS access to the pro\'s location. Our pros work sun up to sun down and you\'ll get an app notification when they\'re en route. If they haven\'t arrived by sundown, please call us back and we\'ll follow up directly with the pro.',
       },
       {
         trigger: '"Why can\'t you give at least an ETA?"',
@@ -467,17 +467,17 @@ const scenarios = [
     label: '"What time on [future date]?"',
     sub: 'Pre-service date inquiry',
     track: 'B',
-    adminiNote: 'Customer Guidance — explain service window for that future date',
-    script: 'For [date], your service window will be [time range]. You\'ll also get an app notification the day of when your pro is heading your way.',
+    adminiNote: 'Customer Guidance — confirm service for that date, sun up to sun down',
+    script: 'For [date], your pro is confirmed and they work sun up to sun down. You\'ll also get an app notification the day of when your pro is heading your way.',
     steps: [
-      { text: 'Set the expectation proactively — give the service window for that date', warn: false },
+      { text: 'Set the expectation proactively — confirm the date and sun up to sun down timeframe', warn: false },
       { text: 'Remind them they\'ll get a day-of app notification when pro is on the way', warn: false },
       { text: 'Reassure they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
     ],
     rebuttals: [
       {
         trigger: '"Can\'t you give a more specific time?"',
-        response: 'Totally fair ask — the challenge is pros manage their own routes and timing shifts based on travel and the jobs before yours. The window is the most accurate we can give. The app notification will give you more real-time notice on the day of.',
+        response: 'Totally fair ask — the challenge is pros manage their own routes and timing shifts based on travel and the jobs before yours. The most accurate timeframe we can give is sun up to sun down. The app notification will give you more real-time notice on the day of.',
       },
     ],
   },
@@ -519,7 +519,7 @@ const scenarios = [
       { text: 'If pro is still coming: give updated ETA + apologize for the wait', warn: false },
       { text: 'If pro is not coming: reschedule immediately + offer credit or expedited booking', warn: false },
       { text: 'Remind them they do NOT need to be home — just unlock gates and keep pets indoors', warn: false },
-      { text: '⚠ Do NOT open with "Our pros have a service window of..." — this guarantees a bad survey', warn: true },
+      { text: '⚠ Do NOT lead with the sun up to sun down timeframe — empathy first, then explain', warn: true },
     ],
     rebuttals: [
       {
@@ -600,7 +600,7 @@ const scenarios = [
   {
     id: 'exact',
     label: 'Insisting on an exact arrival time',
-    sub: 'Won\'t accept the service window',
+    sub: 'Won\'t accept sun up to sun down as the timeframe',
     track: 'A',
     adminiNote: 'Customer Guidance — sun up to sundown + multiple properties + Inbox',
     script: 'I completely understand how frustrating it can be not to have a specific time for your service, and I\'m really sorry for the inconvenience. What I can assure you is that our Pros work from sun up to sundown to complete all scheduled services. Since they also have other properties to take care of, and the time needed can vary depending on the work at each property, it\'s hard to provide an exact timeframe. I recommend reaching out to your Pro directly through the Inbox in our app or website — your message goes straight to them.',
